@@ -18,8 +18,8 @@ import { MoviesContext } from "../../contexts/moviesContext";
 import  PlaylistIcon from "@mui/icons-material/PlaylistAdd";
 export default function MovieCard({ movie, action }) {
   //const movie = props.movie;
-  const { favourites, addToFavourites } = useContext(MoviesContext);
-  const { playlists, addtoplaylists } = useContext(MoviesContext);
+  const { favourites} = useContext(MoviesContext);
+  const { playlists } = useContext(MoviesContext);
   console.log(playlists)
   if (favourites.find((id) => id === movie.id)) {
     movie.favourite = true;
@@ -31,10 +31,7 @@ export default function MovieCard({ movie, action }) {
   } else {
     movie.playlist = false
   }
-  const handleAddToFavourite = (e) => {
-    e.preventDefault();
-    addToFavourites(movie);
-  };
+
   return (
     <Card sx={{ maxWidth: 345 }}>
        <CardHeader

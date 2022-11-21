@@ -11,6 +11,7 @@ export const getMovies = () => {
      throw error
   });
 };
+
 export const getMovie = (args) => {
   // console.log(args)
   const [, idPart] = args.queryKey;
@@ -69,6 +70,18 @@ export const getMovie = (args) => {
         return json.results;
       });
   };
+
+  export const getSimilarMovie = (id) => {
+    return fetch(
+      `https://api.themoviedb.org/3/movie/${id}/similar?api_key=${process.env.REACT_APP_TMDB_KEY}`
+    )
+     .then((res) => res.json())
+      .then((json) => {
+        // console.log(json.results);
+        return json.results;
+      });
+  };
+
   export const getupcomingMovies = () => {
     return fetch(
       `https://api.themoviedb.org/3/movie/upcoming?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&include_video=false&page=1`

@@ -9,6 +9,7 @@ import Fab from "@mui/material/Fab";
 import Typography from "@mui/material/Typography";
 import Drawer from "@mui/material/Drawer";
 import MovieReviews from "../movieReviews"
+import SimilarMovies from "../SimilarMovies"
 
 
 const root = {
@@ -23,6 +24,7 @@ const chip = { margin: 0.5 };
 
 const MovieDetails = ({ movie }) => { 
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const [similarOpen, setSimilarOpen] = useState(false);
 
   return (
     <>
@@ -86,8 +88,25 @@ const MovieDetails = ({ movie }) => {
         <NavigationIcon />
         Reviews
       </Fab>
+
+      <Fab
+        color="secondary"
+        variant="extended"
+        onClick={() =>setSimilarOpen(true)}
+        sx={{
+          position: 'fixed',
+          bottom: '1em',
+          right: '10em'
+        }}
+      >
+        <NavigationIcon />
+        Similar Movies!
+      </Fab>
       <Drawer anchor="top" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
         <MovieReviews movie={movie} />
+      </Drawer>
+      <Drawer anchor="top" variant="temporary" open={similarOpen} onClose={() => setSimilarOpen(false)}>
+        <SimilarMovies movie={movie} />
       </Drawer>
     </>
   );
