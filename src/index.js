@@ -5,6 +5,7 @@ import {createRoot} from "react-dom/client";
 import { BrowserRouter, Route, Navigate, Routes } from "react-router-dom";
 import HomePage from "./pages/homePage";
 import MoviePage from "./pages/favouriteMoviesPage";
+import PlaylistMoviesPage from "./pages/playlistMoviesPage";
 import Movies from "./pages/movieDetailsPage";
 import Upcoming from "./pages/upcomingMoviesPage";
 import MovieReviewPage from "./pages/movieReviewPage";
@@ -29,6 +30,7 @@ const App = () => {
        <MoviesContextProvider>
       <Routes>
       <Route exact path="/movies/favourites" element={<MoviePage />} />
+      <Route exact path="/movies/playlist" element={<PlaylistMoviesPage />} />
         <Route path="/movies/:id" element={<Movies />} />
         <Route path="/movies/upcoming" element={<Upcoming/>} />
         <Route path="/" element={<HomePage />} />
