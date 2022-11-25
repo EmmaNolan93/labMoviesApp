@@ -1,4 +1,4 @@
-import React, { useState} from "react";
+import React, {  useEffect, useState} from "react";
 import Chip from "@mui/material/Chip";
 import Paper from "@mui/material/Paper";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
@@ -10,7 +10,8 @@ import Typography from "@mui/material/Typography";
 import Drawer from "@mui/material/Drawer";
 import MovieReviews from "../movieReviews"
 import SimilarMovies from "../SimilarMovies"
-
+import { getRecommendedMovie } from "../../api/tmdb-api";
+import { Link } from "react-router-dom";
 
 const root = {
     display: "flex",
@@ -25,7 +26,14 @@ const chip = { margin: 0.5 };
 const MovieDetails = ({ movie }) => { 
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [similarOpen, setSimilarOpen] = useState(false);
-
+  const [movies, setMovies] = useState([]);
+  console.log(getRecommendedMovie(movie.id))
+  useEffect(() => {
+    getRecommendedMovie(movie.id).then((movies) => {
+      setMovies(movies);
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   return (
     <>
       <Typography variant="h5" component="h3">
@@ -72,6 +80,21 @@ const MovieDetails = ({ movie }) => {
           <li key = {c.name}>
             <Chip label = {c.iso_3166_1} sx={chip}/>
             <Chip label={c.name} sx={chip}/>
+          </li>
+        ))}
+      </Paper>
+      <Paper 
+        component="ul" 
+        sx={root}
+      >
+        <li>
+          <Chip label="Recomended Movies:" sx={chip} color="primary" />
+        </li>
+        {movies.map((c, index) => index <= 10 && (
+          <li key = {c.title}>
+            <Link to={`/movies/${c.id}`} style={{ textDecoration: 'none' }}>
+            <Chip label={c.title} sx={chip}/>
+            </Link>
           </li>
         ))}
       </Paper>

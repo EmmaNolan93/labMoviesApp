@@ -7,11 +7,14 @@ import HomePage from "./pages/homePage";
 import MoviePage from "./pages/favouriteMoviesPage";
 import PlaylistMoviesPage from "./pages/playlistMoviesPage";
 import Movies from "./pages/movieDetailsPage";
+import Actor from "./pages/addCastCrewPage";
 import Upcoming from "./pages/upcomingMoviesPage";
 import MovieReviewPage from "./pages/movieReviewPage";
 import SiteHeader from './components/siteHeader';
 import MoviesContextProvider from "./contexts/moviesContext";
 import AddMovieReviewPage from './pages/addMovieReviewPage'
+import TopRatedMovies from "./pages/topRatedMoviesPage";
+
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
@@ -31,7 +34,9 @@ const App = () => {
       <Routes>
       <Route exact path="/movies/favourites" element={<MoviePage />} />
       <Route exact path="/movies/playlist" element={<PlaylistMoviesPage />} />
+      <Route exact path="/movies/toprated" element={<TopRatedMovies />} />
         <Route path="/movies/:id" element={<Movies />} />
+        <Route path="/credits/:id" element={<Actor />} />
         <Route path="/movies/upcoming" element={<Upcoming/>} />
         <Route path="/" element={<HomePage />} />
         <Route path="*" element={ <Navigate to="/" /> } />

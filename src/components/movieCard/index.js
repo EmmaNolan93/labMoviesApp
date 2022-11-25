@@ -18,6 +18,7 @@ import { MoviesContext } from "../../contexts/moviesContext";
 import  PlaylistIcon from "@mui/icons-material/PlaylistAdd";
 import AddToFavouritesIcon from "../cardIcons/addToFavourites";
 import addPlaylist from "../cardIcons/playlistAdd";
+import LocalActivityIcon from '@mui/icons-material/LocalActivity';
 export default function MovieCard({ movie, action }) {
   //const movie = props.movie;
   const { favourites} = useContext(MoviesContext);
@@ -64,7 +65,7 @@ export default function MovieCard({ movie, action }) {
       />
       <CardContent>
         <Grid container>
-          <Grid item xs={6}>
+          <Grid item xs={8}>
             <Typography variant="h6" component="p">
               <CalendarIcon fontSize="small" />
               {movie.release_date}
@@ -74,6 +75,14 @@ export default function MovieCard({ movie, action }) {
             <Typography variant="h6" component="p">
               <StarRateIcon fontSize="small" />
               {"  "} {movie.vote_average}{" "}
+            </Typography>
+          </Grid>
+          <Grid item xs={8}>
+            <Typography variant="h6" component="p">
+              <LocalActivityIcon fontSize="small" />
+              <Link to={`/credits/${movie.id}`}>
+              {" Cast & crew "} 
+              </Link>
             </Typography>
           </Grid>
         </Grid>
