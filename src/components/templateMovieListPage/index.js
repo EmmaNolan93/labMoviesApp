@@ -14,6 +14,7 @@ function MovieListPageTemplate({ movies, title, action }) {
       return m.title.toLowerCase().search(nameFilter.toLowerCase()) !== -1;
     })
     .filter((m) => {
+      console.log(genreId)
       return genreId > 0 ? m.genre_ids.includes(genreId) : true;
     });
 

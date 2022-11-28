@@ -77,11 +77,11 @@ export default function MovieCard({ movie, action }) {
               {"  "} {movie.vote_average}{" "}
             </Typography>
           </Grid>
-          <Grid item xs={8}>
+          <Grid item xs={10}>
             <Typography variant="h6" component="p">
               <LocalActivityIcon fontSize="small" />
               <Link to={`/credits/${movie.id}`}>
-              {" Cast & crew "} 
+              {" See Crew & Cast "} 
               </Link>
             </Typography>
           </Grid>

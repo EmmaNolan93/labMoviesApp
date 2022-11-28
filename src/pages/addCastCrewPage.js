@@ -8,7 +8,7 @@ import MovieCasts from "../components/castsList";
 const ActorPage = (props) => {
   const { id } = useParams();
   const { data: movie, error, isLoading, isError } = useQuery(
-    ["movie", { id: id }],
+    ["cast/crew", { id: id }],
     getMovieCastCrew
   );
 

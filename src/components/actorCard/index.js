@@ -19,7 +19,7 @@ export default function MovieCard(actor) {
        <CardHeader
         title={
           <Typography variant="h5" component="p">
-            {cast.name}{" "}
+            {cast.name}{": "}{cast.known_for_department}
           </Typography>
         }
       />
