@@ -76,11 +76,10 @@ export default function FilterMoviesCard(props) {
             onChange={handleTypeChange}
           >
             {jobs.map((job) => {
-              return (
-                <MenuItem key={job.department} value={job.department}>
-                  {job.department}
-                </MenuItem>
-              );
+              return job.department !== "Actors" ? <MenuItem key={job.department} value={job.department}>
+              {job.department}
+              </MenuItem> : <MenuItem key={"Acting"} value={"Acting"}>{"Acting"}</MenuItem>;
+              
             })}
           </Select>
         </FormControl>
