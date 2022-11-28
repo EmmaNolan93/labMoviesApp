@@ -10,6 +10,9 @@ import SearchIcon from "@mui/icons-material/Search";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import img from '../../images/pexels-dziana-hasanbekava-5480827.jpg'
+import { getDepartments } from "../../api/tmdb-api";
+import { useQuery } from "react-query";
+import Spinner from '../spinner'
 
 const formControl = 
   {
@@ -17,8 +20,18 @@ const formControl =
     minWidth: 220,
     backgroundColor: "rgb(255, 255, 255)"
   };
-
+  
 export default function FilterMoviesCard(props) {
+  const { data, error, isLoading, isError } = useQuery("departments", getDepartments);
+
+  if (isLoading){
+    return <Spinner />;
+  }
+
+  if (isError) {
+    return <h1>{error.message}</h1>;
+  }
+  const jobs = data;
 
   const handleChange = (e, type, value) => {
     e.preventDefault();
@@ -61,12 +74,14 @@ export default function FilterMoviesCard(props) {
             defaultValue=""
             value={props.genreFilter}
             onChange={handleTypeChange}
-          ><MenuItem key={"Acting"} value={"Acting"}>
-                {"Actor"}
-            </MenuItem>  
-            <MenuItem key={"Crew"} value={"Crew"}>
-                {"Crew"}
-            </MenuItem> 
+          >
+            {jobs.map((job) => {
+              return (
+                <MenuItem key={job.department} value={job.department}>
+                  {job.department}
+                </MenuItem>
+              );
+            })}
           </Select>
         </FormControl>
       </CardContent>
