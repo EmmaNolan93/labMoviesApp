@@ -33,7 +33,6 @@ Name: [Emma Nolan]
 [None that I am aware of]
 
 ## TMDB endpoints.
-
 [ List the __additional__ TMDB endpoints used, giving the description and pathname for each one.] 
 
 e.g.
@@ -41,40 +40,89 @@ e.g.
 + /movies/{movie_id}/reviews - The user reviews or a movie.
 + /movie/{movie_id}/similar - A list of similar movies. 
 + /person/popular - A list of popular actors.
-+ /tv/{tv_id}/videos - The videos for a TV show. 
-
++/genre/movie/list? - List of Genres of a Movie
++/tv/${id} - get tv show based on a id 
++ movie/${id}? - get Movie based on a id
++/discover/tv? - get Tv shows 
++/discover/movie? - get Movies
++ configuration/jobs? - get Deparments in a Cast and Crew
++ movie/${id}/images? - get images belong to a movie
++tv/${id}/images? - get images belong to a Tv Show
++/person/${id}/images? - get images belonging to a Person
++person/${id}/movie_credits? - get movie that a person feature in 
++person/${id}/tv_credits? - get Tv shows that a person featured in 
++movie/${id}/recommendations? - get recoomendation based on a movie
++/person/${id}? - get the person that owns this id 
++movie/${id}/credits? - get cast and crew of this movie
++movie/upcoming? - get upcoming movies
++movie/top_rated? - get top rated movies
 ## App Design.
 
 ### Component catalogue.
+![](./Images/MovieCard.png) - Added link to cast and details
+![](./Images/MoviesDetails.png) - Added links to recommended movies and similar movies
+![](./Images/StorybookFilter.png) 
 
-[ Insert a screenshot from the Storybook UI, and highlight the stories that relate to your __new/modified components__ - see the example screenshot below.] .......
-
-e.g.
-
-![](./images/stories.png)
 
 ### UI Design.
 
 [ Insert screenshots of the __new app pages__ you developed (including modified existing pages), Have an appropriate caption for each one (see example below).
 
-![ ](./images/detail.png)
+![ ](./images/MoreinfoMovie.png)
 
->Shows detailed information on a movie. Clicking the 'Reviews' floating action button will display extracts from critic reviews.
+>Shows detailed information on a movie. Clicking the 'Reviews' floating action button will display extracts from critic reviews.Clicking the "Similar" floating action button will display extracts from the similar ovies api. Click on the chips showing recommend movies will bring to that specific movie info
 
-![ ](./images/review.png)
+![ ](./images/DisplayReview.png)
 
 >Shows the full review for a movie.
+![ ](./images/WriteReview.png)
+> Page to write a review 
+![ ](./images/addPlaylist.png)
+> Shows added icon to the movie card 
+![ ](./images/Actors.png)
+> Displays Actors (Popular )
+![ ](./images/CastCrewofMovie.png)
+> Shows cast and crew of a movie selected (Black Adam)
+![ ](./images/detailsPerson.png)
+> Shows details of the person selected (Bio etc). Clicking the 'Movies' floating action button will display movies the person has featured in.Clicking the "Tv Show" floating action button will display Tv shows the actor features in.
+![ ](./images/DiscoverMovies.png)
+> Shows movies 
+![ ](./images/DisplaynewfavHeader.png)
+> shows drop down menu in action 
+![ ](./images/DisTvShows.png)
+> shows Tv shows (Discover)
+![ ](./images/favMovies.png)
+>Displays favourite Movies
+![ ](./images/favTvShow.png)
+>Shows favourite tv show
+![ ](./images/MoviePerson.png)
+> Displays movies that a selected person features in 
+![ ](./images/topRateMovies.png)
+> Shows top rated movies
+![ ](./images/tvPerson.png)
+> Displays tv shows that feature a selected persob
+![ ](./images/UpComingMovies.png)
+Displays up coming movies 
 
 ### Routing.
 
-[ List the __new routes__ supported by your app and state the associated page.]
+        +"/movies/favourites" - Favourite Movie
+        +"/movies/playlist" - Playlist
+        +"/movies/toprated" - Top Rated Movie Page
+        +"/people/favourites" - Favourite Poeple page
+        +"/credit/movies/:id" - Actor that feature in Movies
+        +"/credit/tv/:id" - Actors that Feature in Tv Show
+        +"/people/:id" - More details on a person (Actor/Crew)
+        +"/tv/:id" - More info for the tv show
+        +"/tv/favourites" - favourite tv show 
+        +"/discover/tvShows" - Get tv shows (Tv Show Page)
+        +"/people/Popular" - Get Popular Poeple Page (Cast & Crew)
+        +/credits/:id - Get cast and crew based on a movie id 
+        +"/movies/upcoming" - get upcoming movies 
+        +/reviews/:id - get reviews on a movie
 
-e.g. 
 
-+ /actors - displays a list of popular actors.
-+ /actors/:id - shows details about a particular actor.
-+ /actors/:id/movies (protected) - an actor's movie credits.
-+ etc.
+
 
 
 
