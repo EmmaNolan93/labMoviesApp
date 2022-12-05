@@ -17,7 +17,12 @@ const Offset = styled('div')(({ theme }) => theme.mixins.toolbar);
 const SiteHeader = ({ history }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
-
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("md"));
 
@@ -25,11 +30,19 @@ const SiteHeader = ({ history }) => {
 
   const menuOptions = [
     { label: "Home", path: "/" },
-    { label: "Favourites", path: "/movies/favourites" },
+    { label: "Favourites"},
     { label: "upcoming", path: "/movies/upcoming" },
     { label: "Playlist", path: "/movies/playlist" },
     { label: "Top Rated Movies", path: "/movies/toprated" },
+    {label: "Tv Shows", path: "/discover/tvShows"},
+    {label: "Popular People", path: "/people/Popular"}
   ];
+
+  const menuDropDown = [
+    { label: "Movies", path: "/movies/favourites" },
+     {label: "Poeple", path:"/people/favourites"},
+     {label: "Tv Show", path:"/tv/favourites"}
+  ]
 
   const handleMenuSelect = (pageURL) => {
     navigate(pageURL, { replace: true });
@@ -74,6 +87,9 @@ const SiteHeader = ({ history }) => {
                   }}
                   open={open}
                   onClose={() => setAnchorEl(null)}
+                  MenuListProps={{
+                    'aria-labelledby': 'basic-button',
+                  }}
                 >
                   {menuOptions.map((opt) => (
                     <MenuItem
@@ -81,21 +97,51 @@ const SiteHeader = ({ history }) => {
                       onClick={() => handleMenuSelect(opt.path)}
                     >
                       {opt.label}
-                    </MenuItem>
+                    </MenuItem> 
                   ))}
                 </Menu>
               </>
             ) : (
               <>
                 {menuOptions.map((opt) => (
+                   opt.label !== "Favourites" ? (
                   <Button
                     key={opt.label}
                     color="inherit"
                     onClick={() => handleMenuSelect(opt.path)}
                   >
                     {opt.label}
+                  </Button>):
+                    <Button
+                    key={opt.label}
+                    color="inherit"
+                    aria-controls={open ? 'basic-menu' : undefined}
+                    aria-haspopup="true"
+                    aria-expanded={open ? 'true' : undefined}
+                    onClick={handleClick}
+                  >
+                    {opt.label}
                   </Button>
+                    
                 ))}
+                 <Menu
+               id="basic-menu"
+               anchorEl={anchorEl}
+               open={open}
+               onClose={handleClose}
+               MenuListProps={{
+              'aria-labelledby': 'basic-button',
+              }}
+              >
+               {menuDropDown.map((opt) =>(
+                      <MenuItem
+                      key={opt.label}
+                      onClick={() => handleMenuSelect(opt.path)}
+                    >
+                      {opt.label}
+                    </MenuItem>
+                    ))}
+             </Menu>
               </>
             )}
         </Toolbar>

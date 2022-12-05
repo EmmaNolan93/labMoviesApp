@@ -1,5 +1,6 @@
 import ActorListPageTemplate from "../templateActorListPage";
-const MovieCasts = ({ movie }) => { 
+import AddToFavouritesIcon from '../cardIcons/addtToFavAct'
+const MovieCasts = ({ movie}) => { 
   let combinedCastCrew = [].concat(movie.cast, movie.crew);
   function removeDuplicateObjectFromArray(array, key) {
     return array.filter((obj, index, self) =>
@@ -14,7 +15,11 @@ console.log(ans)
      <ActorListPageTemplate
        title='Cast of Movie'
        actors={ans}
-     />
+       action={(movie) => {
+        return <AddToFavouritesIcon movie={movie} />
+      }}>
+        
+       </ActorListPageTemplate>
    );
 };
 export default MovieCasts;

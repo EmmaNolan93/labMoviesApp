@@ -1,19 +1,21 @@
 import React, { useState } from "react";
 import Header from "../headerMovieList";
-import FilterCard from "../filterCastCrewCard";
-import ActorList from "../actorList";
+import FilterCard from "../filterMoviesCard";
+import TvList from "../tvShowList";
 import Grid from "@mui/material/Grid";
 
-function ActorListPageTemplate({ actors, title, action}) {
+function MovieListPageTemplate({ tv, title, action }) {
   const [nameFilter, setNameFilter] = useState("");
-  const [genreFilter, setGenreFilter] = useState("");
-  let ans = action
-  let displayedActors = actors
+  const [genreFilter, setGenreFilter] = useState("0");
+  const genreId = Number(genreFilter);
+
+  let displayedMovies = tv
     .filter((m) => {
       return m.name.toLowerCase().search(nameFilter.toLowerCase()) !== -1;
     })
     .filter((m) => {
-      return genreFilter !== "" ? m.known_for_department.includes(genreFilter) : true;
+      console.log(genreId)
+      return genreId > 0 ? m.genre_ids.includes(genreId) : true;
     });
 
   const handleChange = (type, value) => {
@@ -34,9 +36,9 @@ function ActorListPageTemplate({ actors, title, action}) {
             genreFilter={genreFilter}
           />
         </Grid>
-        <ActorList action={ans} movies={displayedActors} ></ActorList>
+        <TvList action={action} tvs={displayedMovies}></TvList>
       </Grid>
     </Grid>
   );
 }
-export default ActorListPageTemplate;
+export default MovieListPageTemplate;

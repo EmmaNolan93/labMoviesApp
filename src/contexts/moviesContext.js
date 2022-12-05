@@ -6,6 +6,8 @@ const MoviesContextProvider = (props) => {
 const [myReviews, setMyReviews] = useState( {} ) 
 const [favourites, setFavourites] = useState( [] )
 const [playlists, setPlaylist] = useState( [] )
+const [peoplefav, setPeopleFav] = useState( [] )
+const [tvShow, setTvShow] = useState( [] )
 
   const addToFavourites = (movie) => {
     let newFavourites = [...favourites];
@@ -14,6 +16,27 @@ const [playlists, setPlaylist] = useState( [] )
     }
     setFavourites(newFavourites);
   };
+  const addTvToFavourites = (movie) => {
+    let newFavourites = [...tvShow];
+    if (!tvShow.includes(movie.id)) {
+      newFavourites.push(movie.id);
+    }
+    setTvShow(newFavourites);
+  };
+  const addPeopleToFavourites = (credit) => {
+    let newPeopleFavourites = [...peoplefav];
+    if (!peoplefav.includes(credit.id)) {
+      newPeopleFavourites.push(credit.id);
+    }
+    setPeopleFav(newPeopleFavourites);
+  };
+
+  const removeFromPeopleFavourites = (credit) => {
+    setPeopleFav( peoplefav.filter(
+      (mId) => mId !== credit.id
+    ) )
+  };
+
   const addtoplaylist = (movie) => {
     let newPlaylists = [...playlists];
     if (!playlists.includes(movie.id)) {
@@ -37,13 +60,24 @@ const [playlists, setPlaylist] = useState( [] )
       (mId) => mId !== movie.id
     ) )
   };
+  const removeFromTv = (movie) => {
+    setTvShow( tvShow.filter(
+      (mId) => mId !== movie.id
+    ) )
+  };
   console.log(playlists)
   return (
     <MoviesContext.Provider
     value={{
       favourites,
       playlists,
+      peoplefav,
+      tvShow,
+      addTvToFavourites,
       addToFavourites,
+      addPeopleToFavourites,
+      removeFromTv,
+      removeFromPeopleFavourites,
       removeFromFavourites,
       removeFromPlaylist,
       addReview,

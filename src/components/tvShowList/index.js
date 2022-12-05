@@ -1,12 +1,12 @@
 import React from "react";
-import Movie from "../movieCard";
+import Tv from "../tvCard";
 import Grid from "@mui/material/Grid";
 
-const MovieList = ( {movies, action }) => {
+const MovieList = ( {tvs, action }) => {
   console.log(action)
-  let movieCards = movies.map((m) => (
+  let movieCards = tvs.map((m) => (
     <Grid key={m.id} item xs={12} sm={6} md={4} lg={3} xl={2}>
-      <Movie key={m.id} movie={m} action={action} />
+      <Tv key={m.id} tv={m} action={action} />
     </Grid>
   ));
   return movieCards;
