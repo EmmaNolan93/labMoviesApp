@@ -24,6 +24,7 @@ export const getTvShows = () => {
      throw error
   });
 };
+
 export const getPopPerson = () => {
   return fetch(
     `https://api.themoviedb.org/3/person/popular?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US&include_adult=false&include_video=false&page=1`
@@ -73,6 +74,21 @@ export const getTvShow = (args) => {
   export const getGenres = async () => {
     return fetch(
       "https://api.themoviedb.org/3/genre/movie/list?api_key=" +
+        process.env.REACT_APP_TMDB_KEY +
+        "&language=en-US"
+    ).then( (response) => {
+      if (!response.ok) {
+        throw new Error(response.json().message);
+      }
+      return response.json();
+    })
+    .catch((error) => {
+      throw error
+   });
+  };
+  export const getLanguages = async () => {
+    return fetch(
+      "https://api.themoviedb.org/3/configuration/languages?api_key=" +
         process.env.REACT_APP_TMDB_KEY +
         "&language=en-US"
     ).then( (response) => {
