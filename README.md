@@ -68,40 +68,42 @@ e.g.
 
 [ Insert screenshots of the __new app pages__ you developed (including modified existing pages), Have an appropriate caption for each one (see example below).
 
-![ ](./images/MoreinfoMovie.png)
+![ ](./Images/MoreinfoMovie.png)
 
 >Shows detailed information on a movie. Clicking the 'Reviews' floating action button will display extracts from critic reviews.Clicking the "Similar" floating action button will display extracts from the similar ovies api. Click on the chips showing recommend movies will bring to that specific movie info
 
-![ ](./images/DisplayReview.png)
+![ ](./Images/DisplayReview.png)
 
 >Shows the full review for a movie.
-![ ](./images/WriteReview.png)
+
+![ ](./Images/WriteReview.png)
+
 > Page to write a review 
-![ ](./images/addPlaylist.png)
+![ ](./Images/addPlaylist.png)
 > Shows added icon to the movie card 
-![ ](./images/Actors.png)
+![ ](./Images/Actors.png)
 > Displays Actors (Popular )
 ![ ](./images/CastCrewofMovie.png)
 > Shows cast and crew of a movie selected (Black Adam)
-![ ](./images/detailsPerson.png)
+![ ](./Images/detailsPerson.png)
 > Shows details of the person selected (Bio etc). Clicking the 'Movies' floating action button will display movies the person has featured in.Clicking the "Tv Show" floating action button will display Tv shows the actor features in.
-![ ](./images/DiscoverMovies.png)
+![ ](./Images/DiscoverMovies.png)
 > Shows movies 
-![ ](./images/DisplaynewfavHeader.png)
+![ ](./Images/DisplaynewfavHeader.png)
 > shows drop down menu in action 
-![ ](./images/DisTvShows.png)
+![ ](./Images/DisTvShows.png)
 > shows Tv shows (Discover)
-![ ](./images/favMovies.png)
+![ ](./Images/favMovies.png)
 >Displays favourite Movies
-![ ](./images/favTvShow.png)
+![ ](./Images/favTvShow.png)
 >Shows favourite tv show
-![ ](./images/MoviePerson.png)
+![ ](./Images/MoviePerson.png)
 > Displays movies that a selected person features in 
-![ ](./images/topRateMovies.png)
+![ ](./Images/topRateMovies.png)
 > Shows top rated movies
-![ ](./images/tvPerson.png)
+![ ](./Images/tvPerson.png)
 > Displays tv shows that feature a selected persob
-![ ](./images/UpComingMovies.png)
+![ ](./Images/UpComingMovies.png)
 Displays up coming movies 
 
 ### Routing.
